@@ -31,8 +31,8 @@ enum VolumeUnits {
   yd3
 }
 
-class Mass extends Measurement<VolumeUnits> {
-  Mass()
+class Volume extends Measurement<VolumeUnits> {
+  Volume()
       : super([
           MetricUnit(VolumeUnits.mm3, 1 / 1000000),
           MetricUnit(VolumeUnits.cm3, 1 / 1000),

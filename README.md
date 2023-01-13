@@ -1,15 +1,6 @@
-/// UnitValue { String id, num value, format, to }
-///
-/// mass( value ).from(unit).to(unit) => unitValue
-/// unitValue.to()
-/// mass.from( value, unit ).to(Units.mg).format()
-/// mass( unitValue )
 
+```dart
+  mass.convert( 800, from: MassUnits.g, to: MassUnits.mgr );
 
-
-/// mass(900).from().to(MassUnits.t)
-/// UnitValue.to().toString("format")
-
-
-mass.convert( 800, from: MassUnits.g, to: MassUnits.mgr )
+```
 
