@@ -16,7 +16,5 @@ class Time extends Measurement<TimeUnits> {
           SiUnit(TimeUnits.week, 60 * 60 * 24 * 7),
           SiUnit(TimeUnits.month, (60 * 60 * 24 * 365.25) / 12),
           SiUnit(TimeUnits.year, 60 * 60 * 24 * 365.25),
-        ], {
-          Systems.si: {Systems.si: 1},
-        });
+        ]);
 }

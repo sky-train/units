@@ -16,21 +16,23 @@ class Anchor<T> {
 abstract class Measurement<T> {
   final Map<T, Unit<T>> units = {};
   final List<Systems> systems = [];
-  final Map<Systems, Anchor<T>> anchors = {};
+  late final Map<Systems, Anchor<T>>? anchors;
 
   UnitValue<T> convert(num value, {required T from, required T to}) {
-    if (units[from]!.system == units[to]!.system) {
+    if (anchors == null || units[from]!.system == units[to]!.system) {
       num aValue = value * units[from]!.toAnchor;
       num newValue = aValue / units[to]!.toAnchor;
       return UnitValue<T>(newValue, units[to]!);
     } else {
-      num aValue = value * units[from]!.toAnchor * anchors[units[from]!.system]!.ratios[units[to]!.system]!;
+      num aValue = value * units[from]!.toAnchor * anchors![units[from]!.system]!.ratios[units[to]!.system]!;
       num newValue = aValue / units[to]!.toAnchor;
       return UnitValue<T>(newValue, units[to]!);
     }
   }
 
-  Measurement(List<Unit<T>> lustUnits, Map<Systems, Map<Systems, num>> listAnchors) {
+  Measurement(List<Unit<T>> lustUnits, [Map<Systems, Map<Systems, num>>? listAnchors]) {
+    anchors = listAnchors != null ? {} : null;
+
     for (var unit in lustUnits) {
       unit.measurement = this;
 
@@ -48,7 +50,9 @@ abstract class Measurement<T> {
 
       // fill anchors
       if (unit.isAnchor) {
-        anchors[unit.system] = Anchor(unit, listAnchors[unit.system]!);
+        if (anchors != null && !anchors!.keys.contains(unit.system)) {
+          anchors![unit.system] = Anchor(unit, listAnchors![unit.system]!);
+        }
       }
     }
   }

@@ -35,9 +35,4 @@ class UnitValue<T> {
   UnitValue<T> to(T toUnit) {
     return unit.measurement.convert(value, from: unit.id, to: toUnit);
   }
-
-  @override
-  String toString({String? format}) {
-    throw UnimplementedError();
-  }
 }
