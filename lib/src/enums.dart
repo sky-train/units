@@ -1,3 +1,5 @@
+enum UMeasurement { energy, length, mass, time, volume }
+
 enum UEnergy { Ws, Wm, Wh, mWh, kWh, MWh, GWh, J, kJ, cal, kCal, MJ, GJ }
 
 enum ULength { mm, cm, m, km, mil, inch, yd, ftUs, ft, fathom, mi, nMi }
