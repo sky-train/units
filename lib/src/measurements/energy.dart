@@ -1,23 +1,23 @@
+import '../enums.dart';
 import '../measurement.dart';
 import '../unit.dart';
 
-enum EnergyUnits { Ws, Wm, Wh, mWh, kWh, MWh, GWh, J, kJ, cal, kCal, MJ, GJ }
 
-class Energy extends Measurement<EnergyUnits> {
+class Energy extends Measurement<UEnergy> {
   Energy()
       : super([
-          SiUnit(EnergyUnits.Ws, 1),
-          SiUnit(EnergyUnits.Wm, 60),
-          SiUnit(EnergyUnits.Wh, 3600),
-          SiUnit(EnergyUnits.mWh, 3.6),
-          SiUnit(EnergyUnits.kWh, 3600000),
-          SiUnit(EnergyUnits.MWh, 3600000000),
-          SiUnit(EnergyUnits.GWh, 3600000000000),
-          SiUnit(EnergyUnits.J, 1),
-          SiUnit(EnergyUnits.kJ, 1000),
-          SiUnit(EnergyUnits.cal, 4.184),
-          SiUnit(EnergyUnits.kCal, 4184),
-          SiUnit(EnergyUnits.MJ, 1000000),
-          SiUnit(EnergyUnits.GJ, 1000000000),
+          SiUnit(UEnergy.Ws, 1),
+          SiUnit(UEnergy.Wm, 60),
+          SiUnit(UEnergy.Wh, 3600),
+          SiUnit(UEnergy.mWh, 3.6),
+          SiUnit(UEnergy.kWh, 3600000),
+          SiUnit(UEnergy.MWh, 3600000000),
+          SiUnit(UEnergy.GWh, 3600000000000),
+          SiUnit(UEnergy.J, 1),
+          SiUnit(UEnergy.kJ, 1000),
+          SiUnit(UEnergy.cal, 4.184),
+          SiUnit(UEnergy.kCal, 4184),
+          SiUnit(UEnergy.MJ, 1000000),
+          SiUnit(UEnergy.GJ, 1000000000),
         ]);
 }

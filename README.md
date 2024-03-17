@@ -1,6 +1,6 @@
 
 ```dart
-  mass.convert( 800, from: MassUnits.g, to: MassUnits.mgr );
+      double value = Units.mass.convert(100, from: UMass.g, to: UMass.kg).value;
 
 ```
 

@@ -1,39 +1,42 @@
 import 'unit.dart';
 
-enum Systems { metric, imperial, si }
+enum UnitSystem { metrical, imperial, si }
 
 class Anchor<T> {
   final Unit<T> unit;
-  final Map<Systems, num> ratios;
+  final Map<UnitSystem, double> ratios;
 
   Anchor(this.unit, this.ratios);
 
-  Systems get system {
+  UnitSystem get system {
     return unit.system;
   }
 }
 
 abstract class Measurement<T> {
   final Map<T, Unit<T>> units = {};
-  final List<Systems> systems = [];
-  late final Map<Systems, Anchor<T>>? anchors;
+  final List<UnitSystem> systems = [];
+  late final Map<UnitSystem, Anchor<T>>? anchors;
 
-  UnitValue<T> convert(num value, {required T from, required T to}) {
+  UnitValue<T> convert(double value, {required T from, required T to}) {
     if (anchors == null || units[from]!.system == units[to]!.system) {
-      num aValue = value * units[from]!.toAnchor;
-      num newValue = aValue / units[to]!.toAnchor;
+      double aValue = value * units[from]!.toAnchor;
+      double newValue = aValue / units[to]!.toAnchor;
       return UnitValue<T>(newValue, units[to]!);
     } else {
-      num aValue = value * units[from]!.toAnchor * anchors![units[from]!.system]!.ratios[units[to]!.system]!;
-      num newValue = aValue / units[to]!.toAnchor;
+      double aValue = value *
+          units[from]!.toAnchor *
+          anchors![units[from]!.system]!.ratios[units[to]!.system]!;
+      double newValue = aValue / units[to]!.toAnchor;
       return UnitValue<T>(newValue, units[to]!);
     }
   }
 
-  Measurement(List<Unit<T>> lustUnits, [Map<Systems, Map<Systems, num>>? listAnchors]) {
+  Measurement(List<Unit<T>> listUnits,
+      [Map<UnitSystem, Map<UnitSystem, double>>? listAnchors]) {
     anchors = listAnchors != null ? {} : null;
 
-    for (var unit in lustUnits) {
+    for (var unit in listUnits) {
       unit.measurement = this;
 
       // fill systems
@@ -42,8 +45,8 @@ abstract class Measurement<T> {
       }
 
       // fill units
-      if (!units.containsKey(unit.id)) {
-        units[unit.id] = unit;
+      if (!units.containsKey(unit.symbol)) {
+        units[unit.symbol] = unit;
       } else {
         //  throw
       }

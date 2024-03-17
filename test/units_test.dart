@@ -4,13 +4,12 @@ import 'package:units/units.dart';
 void main() {
   group('converter', () {
     test('mass', () {
-      final mass = Mass();
-      num value = mass.convert(100, from: MassUnits.g, to: MassUnits.kg).value;
+
+      double value = Units.mass.convert(100, from: UMass.g, to: UMass.kg).value;
       expect(value, 0.1);
     });
     test('energy', () {
-      final energy = Energy();
-      final value = energy.convert(100, from: EnergyUnits.kCal, to: EnergyUnits.kJ).value;
+      double value = Units.energy.convert(100, from: UEnergy.kCal, to: UEnergy.kJ).value;
       expect(value, 418.4);
     });
   });
