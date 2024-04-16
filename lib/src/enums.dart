@@ -26,13 +26,8 @@ enum Volume {
   tsk,
   msk,
   kkp,
-  glas,
-  kanna,
-  tsp,
-  Tbs,
   in3,
   flOz,
-  cup,
   pnt,
   qt,
   gal,
@@ -40,6 +35,11 @@ enum Volume {
   yd3
 }
 
+enum CookUnits {
+  tsp,  // чайна ложка,
+  Tbs,  // столовая ложка
+  cup,  // чашка
+}
 
 
 extension MassMultiLanuages on Mass {
