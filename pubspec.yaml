@@ -1,6 +1,6 @@
 name: units
 description:  package units convertor
-version: 1.0.3
+version: 1.0.4
 publish_to: none
 
 environment:
