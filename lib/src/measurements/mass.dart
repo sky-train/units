@@ -1,25 +1,23 @@
 import '../enums.dart';
-import '../measurement.dart';
+import '../convertor.dart';
 import '../unit.dart';
 
-
-class Mass extends Measurement<UMass> {
-  Mass()
-      : super([
-          MetricUnit(UMass.g, 1),
-          MetricUnit(UMass.kg, 1000),
-          MetricUnit(UMass.mt, 1000000),
-          MetricUnit(UMass.mg, 1 / 1000),
-          MetricUnit(UMass.mcg, 1 / 1000000),
-          ImperialUnit(UMass.t, 2000),
-          ImperialUnit(UMass.oz, 1 / 16),
-          ImperialUnit(UMass.lb, 1),
-        ], {
-          UnitSystem.metrical: {
-            UnitSystem.imperial: 1 / 453.592,
+class MassConvertor extends Convertor<Mass> {
+  MassConvertor()
+      : super(
+          [
+            MetricUnit(Mass.g, 1),
+            MetricUnit(Mass.kg, 1000),
+            MetricUnit(Mass.mt, 1000000),
+            MetricUnit(Mass.mg, 1 / 1000),
+            MetricUnit(Mass.mcg, 1 / 1000000),
+            ImperialUnit(Mass.t, 2000),
+            ImperialUnit(Mass.oz, 1 / 16),
+            ImperialUnit(Mass.lb, 1),
+          ],
+          {
+            UnitSystem.metrical: {UnitSystem.imperial: 1 / 453.592},
+            UnitSystem.imperial: {UnitSystem.metrical: 453.592}
           },
-          UnitSystem.imperial: {
-            UnitSystem.metrical: 453.592,
-          }
-        });
+        );
 }

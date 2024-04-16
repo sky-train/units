@@ -1,14 +1,16 @@
-enum UMeasurement { energy, length, mass, time, volume }
+enum UnitSystem { metrical, imperial, si }
 
-enum UEnergy { Ws, Wm, Wh, mWh, kWh, MWh, GWh, J, kJ, cal, kCal, MJ, GJ }
+enum Measure { energy, length, mass, time, volume }
 
-enum ULength { mm, cm, m, km, mil, inch, yd, ftUs, ft, fathom, mi, nMi }
+enum Energy { Ws, Wm, Wh, mWh, kWh, MWh, GWh, J, kJ, cal, kCal, MJ, GJ }
 
-enum UMass { mcg, mg, g, kg, mt, oz, lb, t }
+enum Length { mm, cm, m, km, mil, inch, yd, ftUs, ft, fathom, mi, nMi }
 
-enum UTime { ns, mu, ms, s, min, h, d, week, month, year }
+enum Mass { mcg, mg, g, kg, mt, oz, lb, t }
 
-enum UVolume {
+enum Time { ns, mu, ms, s, min, h, d, week, month, year }
+
+enum Volume {
   mm3,
   cm3,
   ml,
@@ -36,4 +38,13 @@ enum UVolume {
   gal,
   ft3,
   yd3
+}
+
+
+
+extension MassMultiLanuages on Mass {
+
+  String get en {
+    return '';
+  }
 }

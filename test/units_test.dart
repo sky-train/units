@@ -5,11 +5,11 @@ void main() {
   group('converter', () {
     test('mass', () {
 
-      double value = Units.mass.convert(100, from: UMass.g, to: UMass.kg).value;
+      double value = Units.mass.convert(100, from: Mass.g, to: Mass.kg).value;
       expect(value, 0.1);
     });
     test('energy', () {
-      double value = Units.energy.convert(100, from: UEnergy.kCal, to: UEnergy.kJ).value;
+      double value = Units.energy.convert(100, from: Energy.kCal, to: Energy.kJ).value;
       expect(value, 418.4);
     });
   });

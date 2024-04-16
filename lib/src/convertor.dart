@@ -1,6 +1,5 @@
+import 'enums.dart';
 import 'unit.dart';
-
-enum UnitSystem { metrical, imperial, si }
 
 class Anchor<T> {
   final Unit<T> unit;
@@ -13,7 +12,7 @@ class Anchor<T> {
   }
 }
 
-abstract class Measurement<T> {
+abstract class Convertor<T> {
   final Map<T, Unit<T>> units = {};
   final List<UnitSystem> systems = [];
   late final Map<UnitSystem, Anchor<T>>? anchors;
@@ -24,20 +23,17 @@ abstract class Measurement<T> {
       double newValue = aValue / units[to]!.toAnchor;
       return UnitValue<T>(newValue, units[to]!);
     } else {
-      double aValue = value *
-          units[from]!.toAnchor *
-          anchors![units[from]!.system]!.ratios[units[to]!.system]!;
+      double aValue = value * units[from]!.toAnchor * anchors![units[from]!.system]!.ratios[units[to]!.system]!;
       double newValue = aValue / units[to]!.toAnchor;
       return UnitValue<T>(newValue, units[to]!);
     }
   }
 
-  Measurement(List<Unit<T>> listUnits,
-      [Map<UnitSystem, Map<UnitSystem, double>>? listAnchors]) {
+  Convertor(List<Unit<T>> listUnits, [Map<UnitSystem, Map<UnitSystem, double>>? listAnchors]) {
     anchors = listAnchors != null ? {} : null;
 
     for (var unit in listUnits) {
-      unit.measurement = this;
+      unit.measure = this;
 
       // fill systems
       if (!systems.contains(unit.system)) {

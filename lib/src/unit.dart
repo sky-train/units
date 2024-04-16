@@ -1,9 +1,10 @@
-import 'measurement.dart';
+import 'convertor.dart';
+import 'enums.dart';
 
 abstract class Unit<T> {
   final T symbol;
   final UnitSystem system;
-  late final Measurement<T> measurement;
+  late final Convertor<T> measure;
 
   final double toAnchor;
 
@@ -33,6 +34,6 @@ class UnitValue<T> {
   UnitValue(this.value, this.unit);
 
   UnitValue<T> to(T toUnit) {
-    return unit.measurement.convert(value, from: unit.symbol, to: toUnit);
+    return unit.measure.convert(value, from: unit.symbol, to: toUnit);
   }
 }
