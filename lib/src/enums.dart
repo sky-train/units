@@ -37,7 +37,7 @@ enum Volume {
 
 enum CookUnits {
   tsp,  // чайна ложка,
-  Tbs,  // столовая ложка
+  tbs,  // столовая ложка
   cup,  // чашка
 }
 
